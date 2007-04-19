@@ -3,16 +3,15 @@
  Author Site : http://kev.coolcavemen.com
  Style Name  : Sapphire
  Style URI   : http://kev.coolcavemen.com/wp-content/themes/k2/styles/sapphire
- Version     : 0.1
- Comments    : This is a customized style for the Wordpress K2 theme I use on my personnal blog ( http://kev.coolcavemen.com ). It is an adapatation of Saphirre ( http://www.michaelmartine.com/free-wordpress-themes/free-wordpress-theme-sapphire/ ), a theme by Michael Martine ( http://michaelmartine.com ) released under the under a Creative Commons Attribution 2.5 License. This style also include my personnal K2 hacks from my "Coolkevmen" style.
-
+ Version     : 0.2
+ Comments    : This is a customized style for the Wordpress K2 theme I use on my personnal blog ( http://kev.coolcavemen.com ). It is an adapatation of Saphirre ( http://www.michaelmartine.com/free-wordpress-themes/free-wordpress-theme-sapphire/ ), a theme by Michael Martine ( http://michaelmartine.com ) released under the under a Creative Commons Attribution 2.5 License. This style is tested with K2 0.9.5 RC1 and contain some bug fixes and that should be submitted to and discussed with K2 team.
  Copyright   : Kevin Deldycke & Michael Martine
  Licence     : GNU/GPL
 */
 
 
 /* =======================================
-**  Sapphire adaptation
+**  Sapphire adaptation.
 ** =======================================
 */
 
@@ -26,13 +25,12 @@ h2, h2 a, h2 a:visited,
 h3, h3 a, h3 a:visited,
 h4, h4 a, h4 a:visited,
 .entry-content,
-input[type=text], textarea
-{
+input[type=text], textarea {
   color: #333;
 }
 
 #page {
- width: 760px;
+ width: 760px; /* Reduced from 780px */
  padding-top: 0;
  padding-bottom: 0;
  border: 0;
@@ -40,7 +38,7 @@ input[type=text], textarea
 
 #header {
  background: #3272a0 url(sapphire-head.jpg) center bottom no-repeat;
- height: 180px; /* Reduce from 200px */
+ height: 180px; /* Reduced from 200px */
 }
 
 #header h1 {
@@ -49,6 +47,10 @@ input[type=text], textarea
 
 #header > h1, #header > p {
   text-align: center;
+}
+
+#primary {
+ width: 480px; /* Reduced from 500px; 490px = 500px - (780px - 760px) */
 }
 
 #page .content {
@@ -70,24 +72,81 @@ input[type=text], textarea
 }
 
 
-/* =======================================
-**  Personnal K2 hacks
-** =======================================
+/* ====================================================
+**  K2 bug fix.
+**  Should be commited in K2 trunk but I'm too lazy to
+**    submit a bug report...
+** ====================================================
 */
 
-ul {
- list-style-position: inside;
-/* list-style-type: disc;*/
+/* Bug Fix: display second level lists in comments and
+** make list look the same in comments as in posts.
+** Test case: http://kev.coolcavemen.com/2006/08/e107-to-wordpress-migration-here-is-why/#comment-92
+*/
+#commentlist ul {
+ padding-left: 35px;
+ margin-top: 13px;
+ margin-bottom: 13px;
+}
+#commentlist li li {
+ margin-top: 0;
+ margin-bottom: 3px;
+ padding-top: 0;
+ padding-right: 0;
+ padding-bottom: 0;
+ list-style-type: inherit;
+ list-style-image: inherit;
+ list-style-position: inherit;
 }
 
+/* Margins are not consistent in original K2 theme for images inside a post.
+** This is particularly obvious when several images are displayed side by side.
+** This rule put the same 5px margin for each side of the image.
+** It also float each image within a post to left.
+** Test case: http://kev.coolcavemen.com/2006/09/cd-templates-for-jewel-case-in-svg/
+*/
+#primary .entry-content img {
+  float: left;
+  margin: 5px;
+}
+
+/* Previous rule mess all posts up if one post end with an "imagelink".
+** This rule fix this bad behaviour, on front page and on single post view
+** (=view with comments).
+*/
+#primary .hentry,
+#primary div.comments {
+  clear: both;
+}
+/* Same as above but for list below images.
+** Test case: http://kev.coolcavemen.com/2007/04/how-to-block-ads-in-konqueror/
+*/
+#primary ul, #primary ol {
+  clear: both;
+}
+
+
+/* ====================================================
+**  Other K2 style customisations
+** ====================================================
+*/
+
+/* Consistent unordered list style.
+*/
+ul, ul li {
+ list-style-position: inside;
+ list-style-type: disc;
+}
+
+/* This kind of blockquote is more efficient: it is wider thant K2 default bloquotes as it use a thicker left border instead of padding.
+*/
 blockquote {
- color: #000;
- background: #f9f9f9;
+ background: #eee;
  border-width: 1px 1px 1px 3px;
- border-color: #eee;
+ border-color: #ccc;
  border-style: dotted dotted dotted solid;
- padding-right: 1.3em;
- padding-left: 1.3em;
+ padding-right: 1em;
+ padding-left: 1em;
 }
 
 /* It's easier for the user to spot some widget listing if we show a
@@ -100,30 +159,12 @@ div.sb-related ul li {
   list-style-type: disc;
 }
 
-/* Margins are not consistent in original K2 theme for images inside a post.
-** This rule put the same 5px margin for each side of the image.
-*/
-#primary .entry-content img {
-  float: left;
-  margin: 5px;
-}
-
-/* Float each link to image within post content to left.
+/* Make image link easier to spot by using a subtile blue color.
 */
 #primary .entry-content a.imagelink img {
   border-color: #a7c0de;
 }
-
 #primary .entry-content a.imagelink:hover img {
   border-color: #277ade;
   background-color: #eee;
-}
-
-/* Previous rule mess all posts up if one post end with an "imagelink".
-** This rule fix this bad behaviour, on front page and on single post view
-** (=view with comments).
-*/
-#primary .hentry,
-#primary div.comments {
-  clear: both;
 }
