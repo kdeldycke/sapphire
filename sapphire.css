@@ -3,20 +3,22 @@
  Author Site : http://kev.coolcavemen.com
  Style Name  : Sapphire
  Style URI   : http://kev.coolcavemen.com/wp-content/themes/k2/styles/sapphire
- Version     : 0.2
- Comments    : This is a customized style for the Wordpress K2 theme I use on my personnal blog ( http://kev.coolcavemen.com ). It is an adapatation of Saphirre ( http://www.michaelmartine.com/free-wordpress-themes/free-wordpress-theme-sapphire/ ), a theme by Michael Martine ( http://michaelmartine.com ) released under the under a Creative Commons Attribution 2.5 License. This style is tested with K2 0.9.5 RC1 and contain some bug fixes and that should be submitted to and discussed with K2 team.
- Copyright   : Kevin Deldycke & Michael Martine
+ Version     : 0.3
+ Comments    : This style is designed for K2 v0.9.6 theme. This is an adaptation of Saphirre ( http://www.michaelmartine.com/free-wordpress-themes/free-wordpress-theme-sapphire/ ), a theme by Michael Martine ( http://michaelmartine.com ) released under the under a Creative Commons Attribution 2.5 License.
+ Copyright   : Kevin Deldycke
  Licence     : GNU/GPL
+ Header Text Color: #fff
+ Header Height: 180px
 */
 
 
-/* =======================================
-**  Sapphire adaptation.
-** =======================================
+/* ====================================================
+**  Sapphire adaptation to K2.
+** ====================================================
 */
 
 body {
-  background-color: #141d2e;
+ background: #141d2e url(sapphire-background.png) center top repeat-x;
 }
 
 /* Main font color */
@@ -25,65 +27,71 @@ h2, h2 a, h2 a:visited,
 h3, h3 a, h3 a:visited,
 h4, h4 a, h4 a:visited,
 .entry-content,
-input[type=text], textarea {
-  color: #333;
+input[type=text], textarea,
+blockquote {
+ color: #333;
 }
 
+/* Make some place before the header to let us see rounded corners */
 #page {
- width: 760px; /* Reduced from 780px */
- padding-top: 0;
- padding-bottom: 0;
  border: 0;
+ margin-top: 20px;
+ padding-top: 0;
 }
 
 #header {
- background: #3272a0 url(sapphire-head.jpg) center bottom no-repeat;
+ background: #3272a0 none center bottom no-repeat;
  height: 180px; /* Reduced from 200px */
 }
 
+.sidebar-none   #header {background-image: url(sapphire-header-sidebar-none.png)}
+.sidebar-single #header {background-image: url(sapphire-header-sidebar-single.png)}
+.sidebar-dual   #header {background-image: url(sapphire-header-sidebar-dual.png)}
+
 #header h1 {
- padding-top: 65px; /* Original is 75px. Header heigh was reduced to 180px. So now it's 75px-((200px-180px)/2)=  */
+ padding-top: 65px; /* Original is 75px. We changed it because header heigh was reduced to 180px */
 }
 
-#header > h1, #header > p {
-  text-align: center;
+#header h1, #header .description {
+ text-align: center;
 }
 
-#primary {
- width: 480px; /* Reduced from 500px; 490px = 500px - (780px - 760px) */
-}
-
-#page .content {
- background: white url(sapphire-body.png) repeat-y scroll top;
+#header .description {
+ color: #ccc;
 }
 
 #footer {
- background: transparent url(sapphire-footer.jpg) center top no-repeat;
- margin-top: 0;
- height: 70px; /* 60px = 70px - 10px(=padding-top)  */
+ background: #2f75a9 none center bottom no-repeat;
+ color: #ccc;
+ padding-top: 14px; /* default value: 20px. Too big IMHO. */
+ padding-bottom: 14px; /* default value: 20px. Too big IMHO. */
+ margin-bottom: 20px; /* same as #page top margin */
 }
 
-#footer small {
-  color: #ccc;
-}
+.sidebar-none   #footer {width: 560px; background-image: url(sapphire-footer-sidebar-none.png);}
+.sidebar-single #footer {width: 780px; background-image: url(sapphire-footer-sidebar-single.png);}
+.sidebar-dual   #footer {width: 950px; background-image: url(sapphire-footer-sidebar-dual.png);}
 
 #footer a {
-  color: #eee;
+ color: #eee;
+ border: 0;
 }
 
 
 /* ====================================================
-**  K2 bug fix.
-**  Should be commited in K2 trunk but I'm too lazy to
-**    submit a bug report...
+**  K2 bug fixes: should be commited in K2 trunk but
+**  i'm too lazy yet to submit a bug report...
 ** ====================================================
 */
 
-/* Bug Fix: display second level lists in comments and
-** make list look the same in comments as in posts.
-** Test case: http://kev.coolcavemen.com/2006/08/e107-to-wordpress-migration-here-is-why/#comment-92
+/* Bug Fix: display second level lists in comments and make list look the same in comments as in posts.
+** Test case:
+**   - for <ul>: http://kev.coolcavemen.com/2006/08/e107-to-wordpress-migration-here-is-why/#comment-92
+**     should look like http://kev.coolcavemen.com/2006/08/e107-to-wordpress-migration-here-is-why/
+**   - for <ol>: http://kev.coolcavemen.com/2006/08/konqueror-config-file-disable-menu-bar/#comment-2893
+**     should look like http://kev.coolcavemen.com/2007/04/how-to-block-ads-in-konqueror/
 */
-#commentlist ul {
+#commentlist ul, #commentlist ol {
  padding-left: 35px;
  margin-top: 13px;
  margin-bottom: 13px;
@@ -102,32 +110,38 @@ input[type=text], textarea {
 /* Margins are not consistent in original K2 theme for images inside a post.
 ** This is particularly obvious when several images are displayed side by side.
 ** This rule put the same 5px margin for each side of the image.
-** It also float each image within a post to left.
 ** Test case: http://kev.coolcavemen.com/2006/09/cd-templates-for-jewel-case-in-svg/
 */
 #primary .entry-content img {
-  float: left;
-  margin: 5px;
+ margin: 5px;
 }
-
 /* Previous rule mess all posts up if one post end with an "imagelink".
 ** This rule fix this bad behaviour, on front page and on single post view
 ** (=view with comments).
 */
 #primary .hentry,
 #primary div.comments {
-  clear: both;
+ clear: both;
 }
 /* Same as above but for list below images.
 ** Test case: http://kev.coolcavemen.com/2007/04/how-to-block-ads-in-konqueror/
 */
 #primary ul, #primary ol {
-  clear: both;
+ clear: both;
+}
+/* Reset smileys 5px margin rule to their default value.
+** Test case: http://kev.coolcavemen.com/2007/06/how-to-launch-a-kde-application-in-another-language/
+*/
+#primary .entry-content img.wp-smiley {
+ margin: 0;
 }
 
 
 /* ====================================================
-**  Other K2 style customisations
+**  Other K2 style customisations: Mainly coded for my
+**  personnal blog. It's not a bad idea to remove all
+**  the CSS code below to revert to default K2
+**  behaviour.
 ** ====================================================
 */
 
@@ -141,7 +155,7 @@ ul, ul li {
 /* This kind of blockquote is more efficient: it is wider thant K2 default bloquotes as it use a thicker left border instead of padding.
 */
 blockquote {
- background: #eee;
+ background-color: #eee;
  border-width: 1px 1px 1px 3px;
  border-color: #ccc;
  border-style: dotted dotted dotted solid;
@@ -152,19 +166,72 @@ blockquote {
 /* It's easier for the user to spot some widget listing if we show a
 ** graphical element before each one, because the visibility of the post
 ** list is reduced when long titles get rendered on multiple lines.
-**   TODO: use a fancier image instead of displaying a simple 'disc'.
 */
 div.sb-latest  ul li,
 div.sb-related ul li {
-  list-style-type: disc;
+ list-style-type: disc;
 }
 
 /* Make image link easier to spot by using a subtile blue color.
 */
 #primary .entry-content a.imagelink img {
-  border-color: #a7c0de;
+ border-color: #a7c0de;
 }
 #primary .entry-content a.imagelink:hover img {
-  border-color: #277ade;
-  background-color: #eee;
+ border-color: #277ade;
+ background-color: #eee;
+}
+
+/* Float each image within a post to left,
+** except for images with 'center' class, and smileys.
+*/
+#primary .entry-content img {
+ float: left;
+}
+
+#primary .entry-content img.center,
+#primary .entry-content img.wp-smiley {
+ float: inherit;
+}
+
+/* Center image with "center" class
+*/
+#primary .entry-content img.center {
+ display: block;
+ margin-right: auto;
+ margin-left: auto;
+}
+
+/* Sometimes I add images within titles tags as icons.
+** Test case: http://kev.coolcavemen.com/linux-scripts/
+*/
+#primary .entry-content h4 img {
+ border: 0;
+ padding: 0;
+ margin: 0;
+ margin-right: 5px;
+}
+
+/* Style comment form to make input fields thicker and flat (easier to spot)
+*/
+.comments input[type='text'], textarea#comment {
+ border: 2px solid #ccc;
+}
+
+/* Separate bottom navigation using a light dotted line
+*/
+.comments .navigation {
+ border-top: 1px dotted #ccc;
+ padding-top: .6em;
+}
+
+
+/* Display all pingbacks in a single box.
+** Inspired by True Blue v1.4 theme: http://stevelam.org/2007/03/true-blue-14/
+*/
+.comments #pinglist {
+ background: #e4e9ef;
+ border-width: 3px 1px 1px;
+ border-color: #d2d7dd;
+ border-style: solid;
 }
