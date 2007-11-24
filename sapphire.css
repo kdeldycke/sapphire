@@ -3,8 +3,8 @@
  Author Site : http://kev.coolcavemen.com
  Style Name  : Sapphire
  Style URI   : http://kev.coolcavemen.com/wp-content/themes/k2/styles/sapphire
- Version     : 0.3
- Comments    : This style is designed for K2 v0.9.6 theme. This is an adaptation of Saphirre ( http://www.michaelmartine.com/free-wordpress-themes/free-wordpress-theme-sapphire/ ), a theme by Michael Martine ( http://michaelmartine.com ) released under the under a Creative Commons Attribution 2.5 License.
+ Version     : 0.4
+ Comments    : This style is designed for K2 RC3 theme. This is an adaptation of Saphirre ( http://www.michaelmartine.com/free-wordpress-themes/free-wordpress-theme-sapphire/ ), a theme by Michael Martine ( http://michaelmartine.com ) released under the under a Creative Commons Attribution 2.5 License.
  Copyright   : Kevin Deldycke
  Licence     : GNU/GPL
  Header Text Color: #fff
@@ -44,9 +44,9 @@ blockquote {
  height: 180px; /* Reduced from 200px */
 }
 
-.sidebar-none   #header {background-image: url(sapphire-header-sidebar-none.png)}
-.sidebar-single #header {background-image: url(sapphire-header-sidebar-single.png)}
-.sidebar-dual   #header {background-image: url(sapphire-header-sidebar-dual.png)}
+.columns-one   #header {background-image: url(sapphire-header-sidebar-none.png)}
+.columns-two   #header {background-image: url(sapphire-header-sidebar-single.png)}
+.columns-three #header {background-image: url(sapphire-header-sidebar-dual.png)}
 
 #header h1 {
  padding-top: 65px; /* Original is 75px. We changed it because header heigh was reduced to 180px */
@@ -68,9 +68,9 @@ blockquote {
  margin-bottom: 20px; /* same as #page top margin */
 }
 
-.sidebar-none   #footer {width: 560px; background-image: url(sapphire-footer-sidebar-none.png);}
-.sidebar-single #footer {width: 780px; background-image: url(sapphire-footer-sidebar-single.png);}
-.sidebar-dual   #footer {width: 950px; background-image: url(sapphire-footer-sidebar-dual.png);}
+.columns-one   #footer {width: 560px; background-image: url(sapphire-footer-sidebar-none.png);}
+.columns-two   #footer {width: 780px; background-image: url(sapphire-footer-sidebar-single.png);}
+.columns-three #footer {width: 950px; background-image: url(sapphire-footer-sidebar-dual.png);}
 
 #footer a {
  color: #eee;
@@ -234,4 +234,29 @@ div.sb-related ul li {
  border-width: 3px 1px 1px;
  border-color: #d2d7dd;
  border-style: solid;
+}
+
+
+
+/* ====================================================
+**  Backports from K2 v0.9.6
+** ====================================================
+*/
+
+/* Keep admin tab on the right */
+.admintab {
+ position: absolute;
+ right: 0;
+}
+* html .admintab { padding: 5px 15px 6px } /* IE hack */
+
+/* Keep image auto-sizing to column width */
+.entry-content img {
+ margin: 0 5px;
+ padding: 4px;
+ border: 1px solid #ccc;
+ max-width: 100%;
+}
+primary table img {
+  max-width: none;
 }
