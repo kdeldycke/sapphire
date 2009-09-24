@@ -1,8 +1,8 @@
 /*
  Author Name : Kevin Deldycke
- Author Site : http://kev.coolcavemen.com
+ Author Site : http://kevin.deldycke.com
  Style Name  : Sapphire
- Style URI   : http://kev.coolcavemen.com/wp-content/themes/k2/styles/sapphire
+ Style URI   : http://kevin.deldycke.com/wp-content/themes/k2/styles/sapphire
  Version     : 0.4
  Comments    : This style is designed for K2 RC3 theme. This is an adaptation of Saphirre ( http://www.michaelmartine.com/free-wordpress-themes/free-wordpress-theme-sapphire/ ), a theme by Michael Martine ( http://michaelmartine.com ) released under the under a Creative Commons Attribution 2.5 License.
  Copyright   : Kevin Deldycke
@@ -86,10 +86,10 @@ blockquote {
 
 /* Bug Fix: display second level lists in comments and make list look the same in comments as in posts.
 ** Test case:
-**   - for <ul>: http://kev.coolcavemen.com/2006/08/e107-to-wordpress-migration-here-is-why/#comment-92
-**     should look like http://kev.coolcavemen.com/2006/08/e107-to-wordpress-migration-here-is-why/
-**   - for <ol>: http://kev.coolcavemen.com/2006/08/konqueror-config-file-disable-menu-bar/#comment-2893
-**     should look like http://kev.coolcavemen.com/2007/04/how-to-block-ads-in-konqueror/
+**   - for <ul>: http://kevin.deldycke.com/2006/08/e107-to-wordpress-migration-here-is-why/#comment-92
+**     should look like http://kevin.deldycke.com/2006/08/e107-to-wordpress-migration-here-is-why/
+**   - for <ol>: http://kevin.deldycke.com/2006/08/konqueror-config-file-disable-menu-bar/#comment-2893
+**     should look like http://kevin.deldycke.com/2007/04/how-to-block-ads-in-konqueror/
 */
 #commentlist ul, #commentlist ol {
  padding-left: 35px;
@@ -110,7 +110,7 @@ blockquote {
 /* Margins are not consistent in original K2 theme for images inside a post.
 ** This is particularly obvious when several images are displayed side by side.
 ** This rule put the same 5px margin for each side of the image.
-** Test case: http://kev.coolcavemen.com/2006/09/cd-templates-for-jewel-case-in-svg/
+** Test case: http://kevin.deldycke.com/2006/09/cd-templates-for-jewel-case-in-svg/
 */
 #primary .entry-content img {
  margin: 5px;
@@ -124,13 +124,13 @@ blockquote {
  clear: both;
 }
 /* Same as above but for list below images.
-** Test case: http://kev.coolcavemen.com/2007/04/how-to-block-ads-in-konqueror/
+** Test case: http://kevin.deldycke.com/2007/04/how-to-block-ads-in-konqueror/
 */
 #primary ul, #primary ol {
  clear: both;
 }
 /* Reset smileys 5px margin rule to their default value.
-** Test case: http://kev.coolcavemen.com/2007/06/how-to-launch-a-kde-application-in-another-language/
+** Test case: http://kevin.deldycke.com/2007/06/how-to-launch-a-kde-application-in-another-language/
 */
 #primary .entry-content img.wp-smiley {
  margin: 0;
@@ -203,7 +203,7 @@ div.sb-related ul li {
 }
 
 /* Sometimes I add images within titles tags as icons.
-** Test case: http://kev.coolcavemen.com/linux-scripts/
+** Test case: http://kevin.deldycke.com/linux-scripts/
 */
 #primary .entry-content h4 img {
  border: 0;
