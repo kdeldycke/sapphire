@@ -5,6 +5,8 @@ Style for the
 [K2](https://web.archive.org/web/20150107112837/http://getk2.com/about/)
 WordPress theme.
 
+![Sapphire for K2 Wordpress Theme](sapphire-k2-v03-screenshot.png)
+
 
 Compatibility
 -------------
